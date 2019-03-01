@@ -1,0 +1,50 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:core="sap.ui.core" controllerName="ovly.modelos.controller.View1"
+	displayBlock="true">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="{i18n>title}">
+					<content>
+						<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.core="sap.ui.core" editable="true"
+							layout="ResponsiveGridLayout" busy="{/ocupado}">
+							<sap.ui.layout.form:content>
+								<sap.ui.core:Title text="Title"/>
+								<Label text="Nome"/>
+								<Input width="100%" id="nome" value="{/nome}"/>
+								<Label text="Sobrenome"/>
+								<!--<Input value="{/sobrenome}"/>-->
+								<Input value="{path: '/sobrenome', formatter:'.caixaAlta'}"/>
+								<Label text="Cidade"/>
+								<Text text="{/cidade/nome} / {/cidade/estado}"/>
+								<Label text="Feliz"/>
+								<Switch state="{/feliz}"/>
+								<Label text="Skills"/>
+								<!--<Select items="{/skills}">-->
+								<Select items="{ path:'/skills' }">
+									<items>
+										<core:Item text="{}"/>
+									</items>
+								</Select>
+								<Select items="{ path:'/skills2' }">
+									<items>
+										<core:Item text="{nome}"/>
+									</items>
+								</Select>
+								<Label text="Two Way"/>
+								<Slider min="1" max="5" value="{/nota}"/>
+								<RatingIndicator value="{/nota}"/>
+							</sap.ui.layout.form:content>
+						</sap.ui.layout.form:SimpleForm>
+					</content>
+					<footer>
+						<Toolbar>
+							<content>
+								<Button text="Salvar" press="onSave"/>
+							</content>
+						</Toolbar>
+					</footer>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>
